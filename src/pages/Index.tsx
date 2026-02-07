@@ -95,6 +95,66 @@ const Index = () => {
           </p>
         </motion.header>
 
+        {/* Explanation Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="mb-12 mx-auto max-w-3xl"
+        >
+          <div className="glass-card p-6 sm:p-8 space-y-6">
+            <h2 className="text-2xl font-bold text-foreground flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
+                <Compass className="h-5 w-5 text-primary" />
+              </div>
+              O que é Geolocalização?
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              <strong className="text-foreground">Geolocalização</strong> é a tecnologia que permite identificar a 
+              posição geográfica de um dispositivo (como seu celular ou computador) no mundo real. Ela utiliza 
+              dados de <strong className="text-foreground">GPS</strong>, redes Wi-Fi, torres de celular e até o 
+              endereço IP para calcular sua latitude e longitude com precisão.
+            </p>
+
+            <div className="grid gap-4 sm:grid-cols-3">
+              {[
+                {
+                  icon: MapPin,
+                  title: "GPS",
+                  desc: "Satélites orbitando a Terra enviam sinais que seu dispositivo usa para triangular sua posição exata.",
+                },
+                {
+                  icon: Zap,
+                  title: "Wi-Fi & Redes",
+                  desc: "Redes Wi-Fi e torres de celular próximas ajudam a estimar sua localização em áreas urbanas.",
+                },
+                {
+                  icon: Globe,
+                  title: "Aplicações",
+                  desc: "Mapas, delivery, clima, redes sociais e segurança — a geolocalização está em todo lugar.",
+                },
+              ].map((item, i) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 + i * 0.15 }}
+                  className="rounded-xl bg-secondary/50 p-4 space-y-2"
+                >
+                  <item.icon className="h-5 w-5 text-primary" />
+                  <h3 className="font-semibold text-foreground text-sm">{item.title}</h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            <p className="text-sm text-muted-foreground border-t border-border pt-4">
+              💡 Clique no botão abaixo para ver a geolocalização em ação — seu navegador pedirá permissão 
+              para acessar sua localização.
+            </p>
+          </div>
+        </motion.section>
+
         {/* CTA Button */}
         {!geoData && (
           <motion.div
